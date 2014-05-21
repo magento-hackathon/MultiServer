@@ -20,5 +20,35 @@
                 <class>Hackathon_MultiServer_Helper</class>
             </hackathon_multiserver>
         </helpers>
+
+        <multiserver>
+            <rsync>
+                <active>1</active>
+                <servers>
+                    <amazon1>
+                        <name>Amazon 1</name>
+                        <host>54.76.55.50</host>
+                        <port>22</port>
+                        <path>/home/magento</path>
+                        <user>magento</user>
+                        <active>1</active>
+                    </amazon1>
+
+                    <ramnode1>
+                        <name>RamNode 1</name>
+                        <host>81.4.126.241</host>
+                        <port>22</port>
+                        <path>/var/www/magento</path>
+                        <user>magento</user>
+                        <active>1</active>
+                    </ramnode1>
+                </servers>
+            </rsync>
+
+            <log>
+                <filename>iets.log</filename>
+            </log>
+        </multiserver>
+
     </global>
 </config>
