@@ -1,10 +1,11 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: jeroen
- * Date: 21/05/14
- * Time: 10:58
- */ 
+ * Class Hackathon_MultiServer_Helper_Data
+ *
+ * This file needs to exist to keep Magento happy, for example when translations are used in the future.
+ */
+
 class Hackathon_MultiServer_Helper_Data extends Mage_Core_Helper_Abstract {
 
 }
