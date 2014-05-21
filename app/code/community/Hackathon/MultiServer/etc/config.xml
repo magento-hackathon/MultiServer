@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!--suppress XmlUnboundNsPrefix -->
 <config>
     <modules>
         <Hackathon_MultiServer>
@@ -14,6 +15,11 @@
             <hackathon_multiserver_resource>
                 <class>Hackathon_MultiServer_Model_Resource</class>
             </hackathon_multiserver_resource>
+            <index>
+                <rewrite>
+                    <process>Hackathon_MultiServer_Model_Index_Process</process>
+                </rewrite>
+            </index>
         </models>
         <helpers>
             <hackathon_multiserver>

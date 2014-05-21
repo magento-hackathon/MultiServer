@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class Hackathon_MultiServer_Model_Trigger_Listener_Rsync
+ *
+ * Listener which updates the file on remote servers using rsync.
+ * It is in proof-of-concept phase.
+ */
 class Hackathon_MultiServer_Model_Trigger_Listener_Rsync extends Hackathon_MultiServer_Model_Trigger_Listener_Abstract
 {
     /** @var array - List of servers to sync to. */

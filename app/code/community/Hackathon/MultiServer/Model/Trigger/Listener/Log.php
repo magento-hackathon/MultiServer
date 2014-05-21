@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class Hackathon_MultiServer_Model_Trigger_Listener_Log
+ *
+ * Proof of concept trigger listener which just logs the change to a file.
+ * Also very handy for development and debugging.
+ */
 class Hackathon_MultiServer_Model_Trigger_Listener_Log extends Hackathon_MultiServer_Model_Trigger_Listener_Abstract
 {
 
