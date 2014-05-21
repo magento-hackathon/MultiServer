@@ -50,6 +50,8 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync extends Hackathon_Multi
                     $remoteDir = dirname( $targetFile );
 
                     // Make sure the dir exists via SSH.
+                    // There may be a way to have this done by the rsync command, didn't have the time to find it for
+                    // this proof-of-concept.
                     $mkdirCmd = sprintf( 'ssh -p%d %s mkdir -p %s',
                                          $serverInfo['port'],
                                          $sshTarget,
