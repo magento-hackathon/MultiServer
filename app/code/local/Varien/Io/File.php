@@ -645,7 +645,12 @@ class Varien_Io_File extends Varien_Io_Abstract
         $result = @rename($src, $dest);
         chdir($this->_iwd);
 
-        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $this->_cwd . DS . $dest, 'change_time' => time()));
+        if ($pos = strpos($dest, $this->_cwd) === false) {
+            $localPath = $this->_cwd . DS . $dest;
+        } else {
+            $localPath = $dest;
+        }
+        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $localPath, 'change_time' => time()));
 
         return $result;
     }
@@ -663,7 +668,12 @@ class Varien_Io_File extends Varien_Io_Abstract
         $result = @copy($src, $dest);
         @chdir($this->_iwd);
 
-        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $this->_cwd . DS . $dest, 'change_time' => time()));
+        if ($pos = strpos($dest, $this->_cwd) === false) {
+            $localPath = $this->_cwd . DS . $dest;
+        } else {
+            $localPath = $dest;
+        }
+        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $localPath, 'change_time' => time()));
 
         return $result;
     }
