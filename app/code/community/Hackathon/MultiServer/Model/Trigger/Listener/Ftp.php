@@ -14,6 +14,7 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Ftp extends Hackathon_MultiSe
     public function _construct() {
         /**
          * Proof-of-Concept (POC): hard coded server list
+         * @TODO put in XML
          */
         $this->serverList['amazon_test'] = array( 'host' => '54.76.55.50',
                                                   'user' => 'magento',
@@ -46,8 +47,6 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Ftp extends Hackathon_MultiSe
                 }
             }
         }
-
-        return $this;
     }
 
 }

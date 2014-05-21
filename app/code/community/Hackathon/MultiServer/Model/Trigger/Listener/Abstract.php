@@ -24,6 +24,7 @@ abstract class Hackathon_MultiServer_Model_Trigger_Listener_Abstract
      * Listen to Magento event 'multiserver_file_change', and process it via Rsync to another server.
      *
      * @param Varien_Event_Observer $observer
+     * @return Hackathon_MultiServer_Model_Trigger_Listener_Abstract
      */
     public function trigger( $observer ) {
         if ( $this->isActive() ) {
@@ -45,6 +46,7 @@ abstract class Hackathon_MultiServer_Model_Trigger_Listener_Abstract
                 $this->_trigger( $observer );
             }
         }
+        return $this;
     }
 
     /**

@@ -67,7 +67,6 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync extends Hackathon_Multi
                 shell_exec( $rsyncCmd );
             }
         }
-
     }
 
 }
