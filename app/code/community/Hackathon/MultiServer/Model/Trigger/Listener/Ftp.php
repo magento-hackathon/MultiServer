@@ -45,7 +45,7 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Ftp extends Hackathon_MultiSe
 
                     if ($conn_id = ftp_connect($serverInfo['host']))
                     {
-                        $login_result = ftp_login($conn_id, $serverInfo['user'], $serverInfo['password']);
+                        ftp_login($conn_id, $serverInfo['user'], $serverInfo['password']);
 
                         ftp_put($conn_id, $remoteFile, $filePath, FTP_ASCII);
 
