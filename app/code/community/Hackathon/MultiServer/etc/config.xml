@@ -20,5 +20,16 @@
                 <class>Hackathon_MultiServer_Helper</class>
             </hackathon_multiserver>
         </helpers>
+        <events>
+            <multiserver_file_change>
+                <observers>
+                    <hackathon_multiserver_rsync>
+                        <type>singleton</type>
+                        <class>hackathon_multiserver/trigger_listener_rsync</class>
+                        <method>trigger</method>
+                    </hackathon_multiserver_rsync>
+                </observers>
+            </multiserver_file_change>
+        </events>
     </global>
 </config>
