@@ -2,7 +2,7 @@
 
 class Hackathon_MultiServer_Model_Trigger_Listener_Log extends Hackathon_MultiServer_Model_Trigger_Listener_Abstract
 {
-
+    protected $listenerType = 'log';
     protected $logFile = false;
 
     public function _construct() {
@@ -30,5 +30,7 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Log extends Hackathon_MultiSe
 
         // We don't call Mage::log here to keep it low level and prevent endless change loop.
         file_put_contents( $this->logFile, $line, FILE_APPEND );
+
+        echo $line . "\n";
     }
 }

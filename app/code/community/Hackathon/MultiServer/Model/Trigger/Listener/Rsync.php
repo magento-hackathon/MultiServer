@@ -5,6 +5,7 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync extends Hackathon_Multi
     /** @var array - List of servers to sync to. */
     protected $serverList = array();
     protected $localMageRoot = false;
+    protected $listenerType = 'rsync';
 
     /**
      * Constructor
@@ -15,10 +16,17 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync extends Hackathon_Multi
          *
          * You need to have public-key authentication set up for this POC.
          */
-        $this->serverList['amazon_test'] = array( 'host' => '54.76.55.50',
-                                                  'port' => 22,
-                                                  'user' => 'magento',
-                                                  'mage_root' => '/home/magento' ); // no tailing slash
+
+        foreach ((array) $this->getConfig()->servers as $key => $server) {
+            if ((bool) $server->active) {
+                $this->serverList[(string)$key] = array(
+                                            'host' => (string)$server->host,
+                                            'port' => (string)$server->port,
+                                            'user' => (string)$server->user,
+                                            'mage_root' => (string)$server->path);
+            }
+
+        }
 
         $this->localMageRoot = Mage::getBaseDir('base'); // no tailing slash
     }

@@ -63,6 +63,7 @@
             </rsync>
 
             <log>
+                <active>1</active>
                 <filename>iets.log</filename>
             </log>
         </multiserver>
