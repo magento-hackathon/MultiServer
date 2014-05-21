@@ -28,6 +28,11 @@
                         <class>hackathon_multiserver/trigger_listener_rsync</class>
                         <method>trigger</method>
                     </hackathon_multiserver_rsync>
+                    <hackathon_multiserver_log>
+                        <type>singleton</type>
+                        <class>hackathon_multiserver/trigger_listener_log</class>
+                        <method>trigger</method>
+                    </hackathon_multiserver_log>
                 </observers>
             </multiserver_file_change>
         </events>
