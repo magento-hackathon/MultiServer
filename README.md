@@ -1,4 +1,4 @@
 MultiServer
 ===========
 
-Purpose: syncronise file changes among multiple servers.
+Purpose: synchronise file changes among multiple servers.
