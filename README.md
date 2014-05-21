@@ -6,9 +6,9 @@ Purpose: synchronise file changes among multiple servers.
 
 Testing
 ===========
-Works for upload files in WYSIWYG editor
-Works for favicon upload
-Works for Import/Export -> Dataflow Profiles -> Export files
+* Works for upload files in WYSIWYG editor
+* Works for favicon upload
+* Works for Import/Export -> Dataflow Profiles -> Export files
 
 Does not work: Backups
 
@@ -19,7 +19,7 @@ For < 1.9.x Magento version please add the dispatchers to the classes/methods th
 
 **Dispatch code**
 
-` Mage::dispatchEvent('multiserver_file_change',array('file_path' => [path to file], 'change_time' => time()));`
+` Mage::dispatchEvent('multiserver_file_change', array('file_path' => [full file path], 'change_time' => time()));`
 
 **Magento classes::method writing out in 1.9.x**
 
