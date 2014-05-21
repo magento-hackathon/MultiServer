@@ -14,18 +14,6 @@
             <hackathon_multiserver_resource>
                 <class>Hackathon_MultiServer_Model_Resource</class>
             </hackathon_multiserver_resource>
-            <core>
-                <rewrite>
-                    <file_storage>Hackathon_MultiServer_Model_Core_File_Storage</file_storage>
-                </rewrite>
-            </core>
-            <adminhtml>
-                <rewrite>
-                    <system_config_source_storage_media_storage>
-                        Hackathon_MultiServer_Model_Adminhtml_System_Config_Source_Storage_Media_Storage
-                    </system_config_source_storage_media_storage>
-                </rewrite>
-            </adminhtml>
         </models>
         <helpers>
             <hackathon_multiserver>
