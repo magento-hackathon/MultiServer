@@ -29,21 +29,20 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Ftp extends Hackathon_MultiSe
      * @param Varien_Event_Observer $observer
      */
     public function _trigger( $observer ) {
-        $filePath   = $observer->getFilePath();    // Required, full server path
+        $filePath     = $observer->getFilePath();
+        $relativeFile = $observer->getRelativeFilePath();
 
-        if ( 0 === strpos( $filePath, $this->localMageRoot ) ) {
-            foreach ( $this->serverList as $key => $serverInfo ) {
-                if ( 'local' != $key ) {
-                    $remoteFile = $serverInfo['mage_root'] . DS . basename($filePath);
+        foreach ( $this->serverList as $key => $serverInfo ) {
+            if ( 'local' != $key ) {
+                $remoteFile = $serverInfo['mage_root'] . DS . $relativeFile;
 
-                    if ($conn_id = ftp_connect($serverInfo['host']))
-                    {
-                        ftp_login($conn_id, $serverInfo['user'], $serverInfo['password']);
+                if ($conn_id = ftp_connect($serverInfo['host']))
+                {
+                    ftp_login($conn_id, $serverInfo['user'], $serverInfo['password']);
 
-                        ftp_put($conn_id, $remoteFile, $filePath, FTP_ASCII);
+                    ftp_put($conn_id, $remoteFile, $filePath, FTP_BINARY);
 
-                        ftp_close($conn_id);
-                    }
+                    ftp_close($conn_id);
                 }
             }
         }
