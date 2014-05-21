@@ -247,7 +247,7 @@ class Varien_Io_File extends Varien_Io_Abstract
         @fclose($this->_streamHandler);
         $this->chmod($this->_streamFileName, $this->_streamChmod);
 
-        Mage::dispatchEvent('multiserver_file_stream_after',array('filename' => $this->_streamFileName, 'mode' => $this->_streamChmod, 'result' => true));
+        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $this->_streamFileName, 'change_time' => time()));
 
         return true;
     }
@@ -471,7 +471,7 @@ class Varien_Io_File extends Varien_Io_Abstract
             $this->chmod($filename, $mode);
         }
 
-        Mage::dispatchEvent('multiserver_file_write_after',array('filename' => $filename, 'mode' => $mode, 'result' => $result));
+        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $filename, 'change_time' => time()));
 
         return $result;
     }
@@ -645,7 +645,7 @@ class Varien_Io_File extends Varien_Io_Abstract
         $result = @rename($src, $dest);
         chdir($this->_iwd);
 
-        Mage::dispatchEvent('multiserver_file_move_after',array('source' => $src, 'destination' => $dest));
+        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $dest, 'change_time' => time()));
 
         return $result;
     }
@@ -663,7 +663,7 @@ class Varien_Io_File extends Varien_Io_Abstract
         $result = @copy($src, $dest);
         @chdir($this->_iwd);
 
-        Mage::dispatchEvent('multiserver_file_copy_after',array('source' => $src, 'destination' => $dest));
+        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $dest, 'change_time' => time()));
 
         return $result;
     }
