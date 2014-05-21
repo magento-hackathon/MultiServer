@@ -4,6 +4,7 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync
 {
     /** @var array - List of servers to sync to. */
     protected $serverList = array();
+    protected $localMageRoot = false;
 
     /**
      * Constructor
@@ -14,11 +15,12 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync
          *
          * You need to have public-key authentication set up for this POC.
          */
-        $this->serverList['local']       = array( 'mage_root' => Mage::getBaseDir('base') );  // no tailing slash
         $this->serverList['amazon_test'] = array( 'host' => '54.76.55.50',
                                                   'port' => 22,
                                                   'user' => 'magento',
                                                   'mage_root' => '/home/magento' ); // no tailing slash
+
+        $this->localMageRoot = Mage::getBaseDir('base'); // no tailing slash
     }
 
     /**
@@ -38,10 +40,9 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync
             $action = 'update';
         }
 
-        $localRoot = $this->serverList['local']['mage_root'];
-        if ( 0 === strpos( $filePath, $localRoot ) ) {
+        if ( 0 === strpos( $filePath, $this->localMageRoot ) ) {
             // File is inside Magento root
-            $relativeFile = substr( $filePath, strlen($localRoot) ); // starts with a slash
+            $relativeFile = substr( $filePath, strlen($this->localMageRoot) ); // starts with a slash
             foreach ( $this->serverList as $key => $serverInfo ) {
                 if ( 'local' != $key ) {
                     $sshTarget = $serverInfo['user'].'@'.$serverInfo['host'];
@@ -57,7 +58,7 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync
 
                     // Rsync the file
                     $destination = $sshTarget.':'.$targetFile;
-                    $rsyncCmd = sprintf( 'rsync -azp --rsh="/usr/bin/ssh -p%d" %s %s',
+                    $rsyncCmd = sprintf( 'rsync -azp --rsh="ssh -p%d" %s %s',
                                          $serverInfo['port'],
                                          $filePath,
                                          $destination );
