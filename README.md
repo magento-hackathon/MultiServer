@@ -11,6 +11,7 @@ Testing
 * Works for Import/Export -> Dataflow Profiles -> Export files
 * Works for Category Images
 * Works for Product Images
+* Works for Index Lock files
 
 Compatibility
 ===========
