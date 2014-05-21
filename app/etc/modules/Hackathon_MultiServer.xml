@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Hackathon_MultiServer>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core/>
+
+            </depends>
+        </Hackathon_MultiServer>
+    </modules>
+</config>

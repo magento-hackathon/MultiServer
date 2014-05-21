@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Hackathon_MultiServer>
+            <version>0.1.0</version>
+        </Hackathon_MultiServer>
+    </modules>
+    <global>
+        <models>
+            <hackathon_multiserver>
+                <class>Hackathon_MultiServer_Model</class>
+                <resourceModel>hackathon_multiserver_resource</resourceModel>
+            </hackathon_multiserver>
+            <hackathon_multiserver_resource>
+                <class>Hackathon_MultiServer_Model_Resource</class>
+            </hackathon_multiserver_resource>
+            <core>
+                <rewrite>
+                    <file_storage>Hackathon_MultiServer_Model_Core_File_Storage</file_storage>
+                </rewrite>
+            </core>
+        </models>
+        <helpers>
+            <hackathon_multiserver>
+                <class>Hackathon_MultiServer_Helper</class>
+            </hackathon_multiserver>
+        </helpers>
+    </global>
+</config>
