@@ -10,8 +10,6 @@ Testing
 * Works for favicon upload
 * Works for Import/Export -> Dataflow Profiles -> Export files
 
-Does not work: Backups
-
 Compatibility
 ===========
 This extension relies heavily on rewritten lib/Varien classes (yes it's ugly, we know). No code was changed but event dispatchers were added.
