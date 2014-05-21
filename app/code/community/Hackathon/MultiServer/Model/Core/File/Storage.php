@@ -15,22 +15,22 @@ class Hackathon_MultiServer_Model_Core_File_Storage extends Mage_Core_Model_File
             $storage = Mage::helper('core/file_storage')->getCurrentStorageCode();
         }
 
-        switch ($storage) {
-            case self::STORAGE_MEDIA_FILE_SYSTEM:
-                $model = Mage::getModel('core/file_storage_file');
-                break;
-            case self::STORAGE_MEDIA_DATABASE:
-                $connection = (isset($params['connection'])) ? $params['connection'] : null;
-                $model = Mage::getModel('core/file_storage_database', array('connection' => $connection));
-                break;
+        // we will init from this method, make sure the parent never inits
+        $params_init = (isset($params['init']) && $params['init']) ? true : false ;
+        unset($params['init']);
+
+        // use the parent to get the model following core rules
+        $model = parent::getStorageModel($storage, $params);
+
+        switch ($storage) // but overwrite if our awesome storage engine should be used!
+        {
             case self::STORAGE_MEDIA_SYNC_SYSTEM:
                 $model = Mage::getModel('hackathon_multiserver/file_storage_sync');
                 break;
-            default:
-                return false;
         }
 
-        if (isset($params['init']) && $params['init']) {
+        if ($params_init) // init if requested via param
+        {
             $model->init();
         }
 
