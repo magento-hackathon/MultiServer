@@ -24,7 +24,7 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync extends Hackathon_Multi
          */
 
         foreach ((array) $this->getConfig()->servers as $key => $server) {
-            if ((bool) $server->active) {
+            if ( intval($server->active) ) {
                 $this->serverList[(string)$key] = array(
                                             'host' => (string)$server->host,
                                             'port' => (string)$server->port,

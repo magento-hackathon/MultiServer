@@ -12,7 +12,7 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Log extends Hackathon_MultiSe
     protected $logFile = false;
 
     public function _construct() {
-        $this->logFile = Mage::getBaseDir('log') . '/file_change.log';
+        $this->logFile = Mage::getBaseDir('log') . DS . $this->getConfig()->filename;
     }
 
     /**
@@ -36,7 +36,5 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Log extends Hackathon_MultiSe
 
         // We don't call Mage::log here to keep it low level and prevent endless change loop.
         file_put_contents( $this->logFile, $line, FILE_APPEND );
-
-        echo $line . "\n";
     }
 }

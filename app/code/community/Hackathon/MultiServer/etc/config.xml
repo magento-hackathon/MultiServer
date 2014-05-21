@@ -63,14 +63,14 @@
                         <port>22</port>
                         <path>/var/www/magento</path>
                         <user>magento</user>
-                        <active>1</active>
+                        <active>0</active>
                     </ramnode1>
                 </servers>
             </rsync>
 
             <log>
                 <active>1</active>
-                <filename>iets.log</filename>
+                <filename>file_change.log</filename>
             </log>
         </multiserver>
 
