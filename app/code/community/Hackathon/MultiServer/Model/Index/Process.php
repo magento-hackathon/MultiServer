@@ -1,10 +1,11 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: alexanderhuyghebaert
- * Date: 21/05/14
- * Time: 15:44
- */ 
+ * Class Hackathon_MultiServer_Model_Index_Process
+ *
+ * Rewrite for class 'Mage_Index_Model_Process', to catch lock file updates.
+ * @TODO This is not complete, the actual locking is not done cross-server.
+ */
 class Hackathon_MultiServer_Model_Index_Process extends Mage_Index_Model_Process {
 
     /**

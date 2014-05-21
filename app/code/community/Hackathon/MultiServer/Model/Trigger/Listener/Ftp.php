@@ -2,6 +2,8 @@
 
 class Hackathon_MultiServer_Model_Trigger_Listener_Ftp extends Hackathon_MultiServer_Model_Trigger_Listener_Abstract
 {
+    protected $listenerType = 'ftp';
+
     /** @var array - List of servers to sync to. */
     protected $serverList = array();
     protected $localMageRoot = false;

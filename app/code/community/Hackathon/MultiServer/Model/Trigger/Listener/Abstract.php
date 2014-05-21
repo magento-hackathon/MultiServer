@@ -47,6 +47,8 @@ abstract class Hackathon_MultiServer_Model_Trigger_Listener_Abstract
     }
 
     /**
+     * Check if this listener is active
+     *
      * @return bool
      */
     public function isActive() {

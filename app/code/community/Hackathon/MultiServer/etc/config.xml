@@ -15,11 +15,6 @@
             <hackathon_multiserver_resource>
                 <class>Hackathon_MultiServer_Model_Resource</class>
             </hackathon_multiserver_resource>
-            <index>
-                <rewrite>
-                    <process>Hackathon_MultiServer_Model_Index_Process</process>
-                </rewrite>
-            </index>
         </models>
         <helpers>
             <hackathon_multiserver>
@@ -40,6 +35,11 @@
                         <class>hackathon_multiserver/trigger_listener_log</class>
                         <method>trigger</method>
                     </hackathon_multiserver_log>
+                    <hackathon_multiserver_ftp>
+                        <type>singleton</type>
+                        <class>hackathon_multiserver/trigger_listener_ftp</class>
+                        <method>trigger</method>
+                    </hackathon_multiserver_ftp>
                 </observers>
             </multiserver_file_change>
         </events>
@@ -72,6 +72,10 @@
                 <active>1</active>
                 <filename>file_change.log</filename>
             </log>
+
+            <ftp>
+                <active>1</active>
+            </ftp>
         </multiserver>
 
     </global>
