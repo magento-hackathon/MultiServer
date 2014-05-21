@@ -1,11 +1,11 @@
 <?php
 
-class Hackathon_MultiServer_Model_Trigger_Listener_Log
+class Hackathon_MultiServer_Model_Trigger_Listener_Log extends Hackathon_MultiServer_Model_Trigger_Listener_Abstract
 {
 
     protected $logFile = false;
 
-    public function __construct() {
+    public function _construct() {
         $this->logFile = Mage::getBaseDir('log') . '/file_change.log';
     }
 
