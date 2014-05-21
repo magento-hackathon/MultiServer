@@ -1,6 +1,6 @@
 <?php
 
-class Hackathon_MultiServer_Model_Trigger_Listener_Rsync
+class Hackathon_MultiServer_Model_Trigger_Listener_Rsync extends Hackathon_MultiServer_Model_Trigger_Listener_Abstract
 {
     /** @var array - List of servers to sync to. */
     protected $serverList = array();
@@ -9,7 +9,7 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync
     /**
      * Constructor
      */
-    public function __construct() {
+    public function _construct() {
         /**
          * Proof-of-Concept (POC): hard coded server list
          *
