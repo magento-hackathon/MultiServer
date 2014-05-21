@@ -645,7 +645,7 @@ class Varien_Io_File extends Varien_Io_Abstract
         $result = @rename($src, $dest);
         chdir($this->_iwd);
 
-        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $dest, 'change_time' => time()));
+        Mage::dispatchEvent('multiserver_file_change',array('file_path' => $this->_cwd . DS . $dest, 'change_time' => time()));
 
         return $result;
     }
