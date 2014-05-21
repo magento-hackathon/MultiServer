@@ -26,17 +26,8 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Ftp extends Hackathon_MultiSe
      *
      * @param Varien_Event_Observer $observer
      */
-    public function trigger( $observer ) {
+    public function _trigger( $observer ) {
         $filePath   = $observer->getFilePath();    // Required, full server path
-        $changeTime = $observer->getChangeTime();  // optional
-        $action     = $observer->getAction();      // optional, create/update/delete, defaults to 'update'
-
-        if ( empty($changeTime) ) {
-            $changeTime = microtime( true );
-        }
-        if ( empty($action) ) {
-            $action = 'update';
-        }
 
         if ( 0 === strpos( $filePath, $this->localMageRoot ) ) {
             foreach ( $this->serverList as $key => $serverInfo ) {

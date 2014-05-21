@@ -23,8 +23,8 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync extends Hackathon_Multi
          * You need to have public-key authentication set up for this POC.
          */
 
-        foreach ((array) $this->getConfig()->servers as $key => $server) {
-            if ( intval($server->active) ) {
+        foreach ( (array) $this->getConfig()->servers as $key => $server ) {
+            if ( intval( $server->active ) ) {
                 $this->serverList[(string)$key] = array(
                                             'host' => (string)$server->host,
                                             'port' => (string)$server->port,
@@ -42,17 +42,9 @@ class Hackathon_MultiServer_Model_Trigger_Listener_Rsync extends Hackathon_Multi
      *
      * @param Varien_Event_Observer $observer
      */
-    public function trigger( $observer ) {
-        $filePath   = $observer->getFilePath();    // Required, full server path
-        $changeTime = $observer->getChangeTime();  // optional
-        $action     = $observer->getAction();      // optional, create/update/delete, defaults to 'update'
+    public function _trigger( $observer ) {
 
-        if ( empty($changeTime) ) {
-            $changeTime = microtime( true );
-        }
-        if ( empty($action) ) {
-            $action = 'update';
-        }
+        $filePath   = $observer->getFilePath();    // Required, full server path
 
         if ( 0 === strpos( $filePath, $this->localMageRoot ) ) {
             // File is inside Magento root
